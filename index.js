@@ -5,10 +5,10 @@ const pdf2base64 = require('pdf-to-base64');
 const { Client, LocalAuth, MessageMedia } = require('whatsapp-web.js');
 const path = require("path");
 
-const database = require('../whatsapp_bot/database/db');
-const MediaDB = require('../whatsapp_bot/model/media');
+const database = require('../pdf-whatsapp-fast/database/db');
+const MediaDB = require('../pdf-whatsapp-fast/model/media');
 
-const directory = "/workspace/whatsapp_bot/users";
+const directory = "../pdf-whatsapp-fast/users";
 
 fs.readdir(directory, (err, files) => {
   if (err) throw err;
@@ -93,7 +93,7 @@ client.on('message', async msg => {
     if (msg.hasMedia) {
         const media = await msg.downloadMedia();
         const contact = await msg.getContact()
-        const folderName = `/workspace/whatsapp_bot/users`;
+        const folderName = `/workspace/pdf-whatsapp-fast/users`;
         // Converte o arquivo base 64 em uma string binária
         function base64ToBinary(base64) {
             return Buffer.from(base64, 'base64').toString('binary');
