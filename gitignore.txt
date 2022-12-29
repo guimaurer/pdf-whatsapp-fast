@@ -1,0 +1,6 @@
+/node_modules
+users/
+
+# Test sessions
+*session.json
+.wwebjs_auth/session/*
